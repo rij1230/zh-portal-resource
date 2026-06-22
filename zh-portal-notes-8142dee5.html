@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>入口说明 · leyu 页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f5f0;
+            font-family: "Noto Serif SC", "Source Han Serif SC", Georgia, "Times New Roman", serif;
+            color: #2d2a24;
+            line-height: 1.8;
+            padding: 2rem 1.5rem 3rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-wrap {
+            max-width: 780px;
+            width: 100%;
+        }
+
+        /* 开场短句 - 类似引题 */
+        .opening-line {
+            font-size: 1.25rem;
+            letter-spacing: 0.03em;
+            color: #726c63;
+            border-left: 3px solid #c8b99b;
+            padding-left: 1.2rem;
+            margin: 1.8rem 0 2.5rem 0;
+            font-weight: 400;
+        }
+
+        /* 主标题 */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: #2b261f;
+            margin-bottom: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        .subhead {
+            font-size: 0.95rem;
+            color: #8b8277;
+            margin-bottom: 2.2rem;
+            border-bottom: 1px dashed #ddd6cb;
+            padding-bottom: 1.2rem;
+        }
+
+        /* 正文段落 */
+        p {
+            margin-bottom: 1.4rem;
+            text-align: justify;
+            word-break: break-word;
+        }
+
+        /* 承接部分 - 引用块 */
+        .note-block {
+            background-color: #f0ebe3;
+            border-left: 6px solid #b7a68e;
+            padding: 1.2rem 1.6rem;
+            margin: 2rem 0 2rem 0;
+            border-radius: 0 8px 8px 0;
+            font-style: normal;
+            color: #3b352e;
+        }
+
+        .note-block p {
+            margin-bottom: 0.4rem;
+        }
+
+        .note-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 特点列表 */
+        .feature-list {
+            list-style: none;
+            margin: 2.2rem 0 2.5rem 0;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 0.8rem 0 0.8rem 2rem;
+            border-bottom: 1px solid #e6dfd4;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        .feature-list li::before {
+            content: "·";
+            position: absolute;
+            left: 6px;
+            top: 0.75rem;
+            font-size: 1.8rem;
+            color: #a08d74;
+            line-height: 1;
+        }
+
+        .feature-list strong {
+            font-weight: 600;
+            color: #3d352b;
+        }
+
+        /* 场景小卡片（灵活组合） */
+        .scene-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0 1.8rem;
+        }
+
+        .scene-item {
+            background: #fcfaf7;
+            border: 1px solid #e3dbd0;
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            flex: 1 1 180px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .scene-item h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #4f4539;
+            margin-bottom: 0.3rem;
+            letter-spacing: 0.5px;
+        }
+
+        .scene-item p {
+            font-size: 0.92rem;
+            color: #5f5548;
+            margin-bottom: 0;
+        }
+
+        /* 温和结尾 / 提示框 */
+        .gentle-closing {
+            background: #e8e1d6;
+            padding: 1.6rem 2rem;
+            border-radius: 24px 8px 24px 8px;
+            margin: 2.5rem 0 2rem 0;
+            text-align: center;
+        }
+
+        .gentle-closing p {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .gentle-closing .small-meta {
+            font-size: 0.85rem;
+            color: #6f6558;
+        }
+
+        /* 内嵌链接样式 */
+        a {
+            color: #7a684f;
+            text-decoration: none;
+            border-bottom: 1px solid #cbbca9;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        a:hover {
+            color: #3f3325;
+            border-bottom-color: #7a684f;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            margin-top: 2.5rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #ddd6cb;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .faq-mini summary {
+            cursor: pointer;
+            font-weight: 500;
+            color: #4f4539;
+            padding: 0.3rem 0;
+        }
+
+        .faq-mini details p {
+            margin: 0.4rem 0 0.8rem 1.2rem;
+            color: #4f463b;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.5rem 1rem 2rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .opening-line {
+                font-size: 1.05rem;
+                padding-left: 0.8rem;
+            }
+            .scene-box {
+                flex-direction: column;
+            }
+            .note-block {
+                padding: 1rem 1.2rem;
+            }
+            .gentle-closing {
+                padding: 1.2rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- 开场短句 -->
+    <div class="opening-line">
+        从一个稳定的入口开始，比频繁寻找更省心力。
+    </div>
+
+    <!-- 主标题与说明 -->
+    <h1>关于 leyu 的页面说明</h1>
+    <div class="subhead">整理于 2025 · 一份平实的指引</div>
+
+    <p>
+        无论你是初次接触还是希望有一个固定的访问路径，这个页面整理了关于 <strong><a href="https://zh-portal-leyu.com">leyu</a></strong> 的基本信息与使用场景。下文从入口特点、常见用途和注意事项三个角度展开，内容保持简洁与真实，不包含任何未经核实的承诺。
+    </p>
+
+    <!-- 承接段落：稳定入口的考虑 -->
+    <div class="note-block">
+        <p><strong>为什么需要稳定的入口？</strong> 网络环境时常变化，一个可靠的地址可以减少反复查找的麻烦。基于这个出发点，我们整理了与 leyu 相关的功能模块与访问方式，方便你在需要时直接使用。</p>
+        <p>以下内容均围绕这一原则展开，不包含诱导点击或过度宣传。</p>
+    </div>
+
+    <!-- 特点列表 -->
+    <h3 style="font-weight:500; margin-top:0.5rem; color:#3b352e;">常见特点</h3>
+    <ul class="feature-list">
+        <li><strong>页面结构清晰</strong> —— 主要信息分区明确，减少浏览时的认知负担。</li>
+        <li><strong>适应多种设备</strong> —— 无论电脑还是手机，排版均保持可读性与一致性。</li>
+        <li><strong>内容定期更新</strong> —— 非一次性页面，会跟随实际情况进行调整。</li>
+        <li><strong>直接访问路径</strong> —— 在大多数情况下，通过 <a href="https://zh-portal-leyu.com">leyu</a> 即可到达核心页面，无需额外跳转。</li>
+    </ul>
+
+    <!-- 场景小卡片：不同使用方式 -->
+    <div class="scene-box">
+        <div class="scene-item">
+            <h4>日常浏览</h4>
+            <p>直接打开页面，查看最新信息或功能列表，无需登录即可阅读大部分内容。</p>
+        </div>
+        <div class="scene-item">
+            <h4>功能查询</h4>
+            <p>通过页面内的索引或分类导航，快速定位到所需板块，节省时间。</p>
+        </div>
+        <div class="scene-item">
+            <h4>书签保存</h4>
+            <p>将地址保存为浏览器书签，后续可直接从收藏夹进入，避免手动输入错误。</p>
+        </div>
+    </div>
+
+    <!-- 温和提示框 -->
+    <div class="gentle-closing">
+        <p>📎 如果你正在寻找一个稳定、直接的访问方式，<br>
+        不妨将 <a href="https://zh-portal-leyu.com">leyu</a> 加入书签栏。</p>
+        <p class="small-meta">页面本身不收集任何个人信息，仅作为信息索引与入口说明存在。</p>
+    </div>
+
+    <!-- FAQ 摘要（轻量） -->
+    <div class="faq-mini">
+        <details>
+            <summary>页面内容会频繁变化吗？</summary>
+            <p>主要结构和核心链接保持稳定，细节部分会根据实际运营情况做微调，更新频率不高。</p>
+        </details>
+        <details>
+            <summary>是否需要注册才能使用？</summary>
+            <p>浏览页面内容不需要注册。部分功能模块可能要求登录，页面中会有相应提示。</p>
+        </details>
+        <details>
+            <summary>遇到打不开的情况怎么办？</summary>
+            <p>可先检查本地网络连接，或稍后再试。若持续无法访问，建议通过其他可靠渠道确认地址状态。</p>
+        </details>
+    </div>
+
+    <!-- 结尾短句 -->
+    <p style="margin-top: 2.2rem; font-size: 0.9rem; color: #7c7266; text-align: center; border-top: 1px solid #e2d9cf; padding-top: 1.5rem;">
+        以上内容基于常规使用场景整理，不构成任何形式的保证。
+    </p>
+
+</div>
+</body>
+</html>
